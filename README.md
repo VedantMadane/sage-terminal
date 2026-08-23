@@ -202,6 +202,86 @@ Have a question? Want to share your setup or suggest a theme? Head to **[GitHub 
 
 ---
 
+
+## FAQ
+
+### How do I apply a theme?
+
+SAGE theme JSON files live in the [`/themes`](./themes/) folder. Set the scheme on your default profile (or a specific profile) in settings:
+
+```json
+{
+  "profiles": {
+    "defaults": {
+      "colorScheme": "SAGE Neon"
+    }
+  }
+}
+```
+
+Use the exact scheme name from the Themes table above. To add a new theme, see [CONTRIBUTING.md — Adding a theme](./CONTRIBUTING.md#adding-a-theme).
+
+### How do I use SAGE Terminal as my default terminal in VS Code?
+
+In VS Code, open **Settings** and search for `terminal.integrated.defaultProfile.windows`, or edit `settings.json`:
+
+```json
+{
+  "terminal.integrated.defaultProfile.windows": "SAGE Terminal",
+  "terminal.integrated.profiles.windows": {
+    "SAGE Terminal": {
+      "path": "wt.exe",
+      "args": ["-p", "SAGE Terminal"]
+    }
+  }
+}
+```
+
+If you installed via the `.msixbundle`, the profile name matches the installed package profile. On supported Windows builds you can also set the system default console host under **Settings → System → For developers**.
+
+### Can I use SAGE Terminal on Windows 10?
+
+Yes. **Windows 10 version 21H2 or later** is supported, as well as Windows 11. Building from source requires Visual Studio 2022 and the Windows 11 SDK component listed under Getting Started; using a prebuilt release avoids the SDK requirement.
+
+### How do I install a custom font?
+
+1. Install the font for your user (right-click the `.ttf`/`.otf` → **Install**) or system-wide.
+2. In settings JSON, set `font.face` on `profiles.defaults` (or a specific profile):
+
+```json
+{
+  "profiles": {
+    "defaults": {
+      "font": {
+        "face": "Cascadia Code",
+        "size": 12
+      }
+    }
+  }
+}
+```
+
+A Nerd Font or Cascadia Code / Cascadia Mono works well with powerline and glyph-heavy prompts.
+
+### Why does my font look blurry?
+
+Common causes on Windows:
+
+- **Display scaling** — prefer integer scale (100%/200%) when possible, or enable ClearType.
+- **Face/size pairing** — try Cascadia Code at 12–14pt.
+- **GPU / renderer** — keep hardware acceleration enabled and GPU drivers current.
+- **Font choice** — prefer modern outline fonts designed for terminals over old bitmap faces.
+
+### Can I import my existing Windows Terminal settings?
+
+Yes. SAGE is built on Microsoft Terminal infrastructure and uses the same JSON settings model. You can:
+
+1. Open settings (`Ctrl + ,`) and edit the JSON directly, or
+2. Copy scheme objects and profile fragments from your existing Windows Terminal `settings.json` into SAGE's settings file.
+
+Theme contributions in [`/themes`](./themes/) are ordinary color-scheme JSON and can be merged into the `schemes` array. Full build notes: [BUILDING.md](./BUILDING.md).
+
+
 ## 🤝 Contributing
 
 SAGE Terminal welcomes all contributions. Read [CONTRIBUTING.md](./CONTRIBUTING.md) to get started.
