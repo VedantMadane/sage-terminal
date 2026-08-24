@@ -245,7 +245,7 @@ Yes. **Windows 10 version 21H2 or later** is supported, as well as Windows 11. B
 
 ### How do I install a custom font?
 
-1. Install the font for your user (right-click the `.ttf`/`.otf` → **Install**) or system-wide.
+1. Install the font for your user (right-click the TrueType or OpenType font file → **Install**) or system-wide.
 2. In settings JSON, set `font.face` on `profiles.defaults` (or a specific profile):
 
 ```json
@@ -261,7 +261,7 @@ Yes. **Windows 10 version 21H2 or later** is supported, as well as Windows 11. B
 }
 ```
 
-A Nerd Font or Cascadia Code / Cascadia Mono works well with powerline and glyph-heavy prompts.
+A Nerd Font or Cascadia Code / Cascadia Mono works well with status-line glyphs and icon-heavy prompts.
 
 ### Why does my font look blurry?
 
